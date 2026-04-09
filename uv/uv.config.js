@@ -1,6 +1,7 @@
+/* Ultraviolet Configuration */
 self.__uv$config = {
     prefix: '/service/',
-    bare: 'https://collegeapp.me/v/',
+    bare: 'https://uv.student-info.xyz/bare/', // Updated Bare Server
     encodeUrl: Ultraviolet.codec.xor.encode,
     decodeUrl: Ultraviolet.codec.xor.decode,
     handler: '/uv/uv.handler.js',
