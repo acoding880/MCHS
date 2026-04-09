@@ -1,37 +1,29 @@
 "use strict";
 
-const form = document.getElementById("uv-form");
-const address = document.getElementById("uv-address");
-const frame = document.getElementById("uv-frame");
-const mainUI = document.getElementById("main-ui");
-const errorMsg = document.getElementById("uv-error");
+const uvForm = document.getElementById("searchbox");
+const uvAddress = document.getElementById("search");
+const uvFrame = document.getElementById("frame");
+const uvMainUI = document.getElementById("main-ui");
 
-form.addEventListener("submit", async (event) => {
+uvForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   try {
-    // Register the Service Worker
     await registerSW();
   } catch (err) {
-    errorMsg.textContent = "Failed to register Service Worker. Try refreshing.";
-    throw err;
+    alert("Service Worker failed. Please refresh the page.");
+    return;
   }
 
-  const url = search(address.value, "https://www.google.com/search?q=%s");
+  const template = document.getElementById("searchengine").value;
+  const url = searchInput(uvAddress.value, template);
   
-  // Create the encoded Ultraviolet URL
-  const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(url);
-
-  // Show the iframe and hide the search UI
-  mainUI.classList.add("hidden");
-  frame.style.display = "block";
-  frame.src = encodedUrl;
+  uvMainUI.classList.add("hidden");
+  uvFrame.style.display = "block";
+  uvFrame.src = __uv$config.prefix + __uv$config.encodeUrl(url);
 });
 
-/**
- * Basic search logic to handle both URLs and search queries
- */
-function search(input, template) {
+function searchInput(input, template) {
   try {
     return new URL(input).toString();
   } catch (e) {}

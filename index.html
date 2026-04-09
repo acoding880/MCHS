@@ -105,6 +105,9 @@
       box-shadow: 0 6px 2px -2px white;
       color:white;
     }
+    .hidden {
+      display: none;
+    }
     </style>
 </head>
 <body>
@@ -112,21 +115,22 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="/scripts/bg.js"></script>
         
+<div id="main-ui">
 <ul class="navbar">
     <li class="nav-item"><a onclick="home();">Home</a></li>
-    <li class="nav-item"><a onclick="games();">Games</a></li>
-    <li class="nav-item"><a onclick="apps();">Apps</a></li>
-    <li class="nav-item"><a onclick="chat();">Chat</a></li>
     <li class="nav-item"><a onclick="settings();">Settings</a></li>
         
-    <li class="nav-item2"><a onclick="credits();">Credits</a></li>
-    <li class="nav-item2"><a href="https://github.com/dragon731012">My Github</a></li>
-    <li class="nav-item2"><a href="https://discord.gg/Vd5sJVqVzH">Discord Server</a></li>
-    <li class="nav-item2"><a href="https://my.cheddarup.com/c/dm-network">Donate</a></li>
-	
-    <!-- <li class="nav-item2"><a href="https://gofund.me/6ae20d5f" style="display:none;"><a class="custom-dbox-popup" href="https://donorbox.org/dm-network">Donate</a></a></li> -->
-    <!-- <li class="nav-item2"><a onclick="blank();">About:blank</a></li> -->
 </ul>
+
+<form id="searchbox">
+    <input id="search" type="text" placeholder="Search or enter URL">
+    <select id="searchengine">
+        <option value="https://www.google.com/search?q=%s">Google</option>
+        <option value="https://www.bing.com/search?q=%s">Bing</option>
+    </select>
+    <button type="submit">Go</button>
+</form>
+</div>
 
 <a onclick="fullscreen();">
   <div id="fsbutton">Fullscreen</div>
