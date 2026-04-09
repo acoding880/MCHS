@@ -18,8 +18,8 @@ uvForm.addEventListener("submit", async (event) => {
   const template = document.getElementById("searchengine").value;
   const url = searchInput(uvAddress.value, template);
   
-  uvMainUI.classList.add("hidden");
-  uvFrame.style.display = "block";
+  if (uvMainUI) uvMainUI.classList.add("hidden");
+  if (uvFrame) uvFrame.style.display = "block";
   uvFrame.src = __uv$config.prefix + __uv$config.encodeUrl(url);
 });
 
